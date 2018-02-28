@@ -8,15 +8,18 @@ import lendinglib.models.DVD;
 import lendinglib.models.Loan;
 import lendinglib.models.LoanAlreadyExistsException;
 import lendinglib.models.LoanRegistry;
+import lendinglib.models.Material;
+import lendinglib.models.MaterialCatalogDatabaseVersion;
 import lendinglib.models.MaterialCatalogInterface;
 import lendinglib.models.MaterialCatalogMemoryVersion;
+import lendinglib.models.MaterialNotFoundException;
 import lendinglib.utilities.GenderType;
 
 public class Main {
 
 	public static void main(String[] args) {
 
-		MaterialCatalogInterface materialCatalog = new MaterialCatalogMemoryVersion();
+		MaterialCatalogInterface materialCatalog = new MaterialCatalogDatabaseVersion();
 
 		Book book1 = new Book("1001", "Sky", "Smith", "8888", "anytown", 200);
 		Book book2 = new Book("221X", "Ground", "Jones", "7777", "Stockhlm", 100);
@@ -33,19 +36,27 @@ public class Main {
 
 		//book1.relocate("Midsommarkransen");
 
-		materialCatalog.addMaterial(book1);
-		materialCatalog.addMaterial(book2);
-		materialCatalog.addMaterial(book3);
-		materialCatalog.addMaterial(book4);
-		materialCatalog.addMaterial(book5);
-		materialCatalog.addMaterial(dvd1);
-		materialCatalog.addMaterial(dvd2);
+		//materialCatalog.addMaterial(book1);
+		//materialCatalog.addMaterial(book2);
+		//materialCatalog.addMaterial(book3);
+		//materialCatalog.addMaterial(book4);
+		//materialCatalog.addMaterial(book5);
+		//materialCatalog.addMaterial(dvd1);
+		//materialCatalog.addMaterial(dvd2);
 		
+		//System.out.println("There are items in materialCatalog: " + materialCatalog.getNumberOfMaterials());
 
+		try {
+			Material foundMaterial = materialCatalog.findMaterial("Java");
+			System.out.println(foundMaterial);
+		} catch (MaterialNotFoundException e) {
+			System.out.println("No matching items found");
+		}
+		
 		UI ui = new UI();
 		ui.printHeader();
 
-		ui.printMaterialCatalog(materialCatalog.getMaterialMap());
+		//ui.printMaterialCatalog(materialCatalog.getMaterialMap());
 
 		// Checked exceptions
 		// try {

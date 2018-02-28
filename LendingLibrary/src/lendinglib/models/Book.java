@@ -29,6 +29,10 @@ public class Book extends Material{
 		return 21;
 	}
 	
+	public int getNumberOfPages() {
+		return noOfPages;
+	}
+	
 	@Override 
 	public String toString() {
 		return "BOOK: " + getID() + " " + getTitle() + " " + getAuthor();

@@ -39,6 +39,15 @@ public class DVD extends Material {
 		return 7;
 	}
 	
+	public int getRunningTime() {
+		return runningTime;
+	}
+	
+	public String getCatalogNumber() {
+		return catalogNo;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "DVD: " + getID() + " " + getTitle() + " " + getDirector();
